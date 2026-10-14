@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Etsy Fee Calculator – See Your Real Profit Per Sale (Free)</title><meta name="description" content="Free Etsy fee calculator: enter your price, shipping and costs to see Etsy fees and your real profit per sale. Editable fee rates."><link rel="stylesheet" href="style.css"></head>
+<body><header><a href="index.html">Operational Clarity · Free Small Business Calculators</a></header><main><h1>Etsy Fee & Profit Calculator</h1>
+
+<p>Enter your item price and costs to see what you actually keep after Etsy fees. Fee rates are editable. Check the current rates in your own Etsy account, because they vary by country and change over time.</p>
+<div class="card"><div class="grid">
+<div><label>Item price ($)</label><input id="p" type="number" value="24.99" step="0.01"></div>
+<div><label>Shipping you charge ($)</label><input id="s" type="number" value="0" step="0.01"></div>
+<div><label>Your cost per item: materials, POD base, etc. ($)</label><input id="c" type="number" value="9.45" step="0.01"></div>
+<div><label>Your shipping cost ($)</label><input id="sc" type="number" value="4.75" step="0.01"></div>
+<div><label>Transaction fee (%)</label><input id="tf" type="number" value="6.5" step="0.1"></div>
+<div><label>Payment processing (%)</label><input id="pp" type="number" value="3" step="0.1"></div>
+<div><label>Processing fixed fee ($)</label><input id="pf" type="number" value="0.25" step="0.01"></div>
+<div><label>Listing fee ($)</label><input id="lf" type="number" value="0.20" step="0.01"></div>
+<div><label>Sale came from an Offsite Ad?</label><select id="oa"><option value="0">No</option><option value="15">Yes (15%)</option><option value="12">Yes (12%)</option></select></div>
+</div><div class="out"><div>Etsy fees: <b id="fees"></b></div><div>Net profit: <span class="big" id="net"></span></div><div>Margin: <b id="m"></b></div></div></div>
+<div class="card"><h2>Track this for every product, automatically</h2><p>The Etsy Print-on-Demand Profit Tracker (Excel + Google Sheets) calculates fees, profit, break-even and target price for up to 100 products, with a sales log and monthly dashboard.</p><a class="cta" href="https://www.etsy.com/listing/4594208500">Get the Profit Tracker on Etsy</a></div>
+<script>function f(){const v=id=>parseFloat(document.getElementById(id).value)||0;const rev=v("p")+v("s");const fees=rev*(v("tf")+v("pp")+v("oa"))/100+v("pf")+v("lf");const net=rev-fees-v("c")-v("sc");
+document.getElementById("fees").textContent="$"+fees.toFixed(2);document.getElementById("net").textContent="$"+net.toFixed(2);document.getElementById("m").textContent=rev?(net/rev*100).toFixed(1)+"%":"–";}
+document.querySelectorAll("input,select").forEach(e=>e.addEventListener("input",f));f();</script>
+</main><footer>Free tools by <a href="https://www.etsy.com/shop/Operationalclarity">Operational Clarity</a>. Estimates only, not financial or tax advice. Not affiliated with Etsy.</footer></body></html>

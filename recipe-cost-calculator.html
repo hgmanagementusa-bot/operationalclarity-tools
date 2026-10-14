@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recipe Cost Calculator – Price Baked Goods Per Serving (Free)</title><meta name="description" content="Free recipe cost calculator for home bakers and cottage food businesses: ingredient cost per batch and per serving, plus a suggested price."><link rel="stylesheet" href="style.css"></head>
+<body><header><a href="index.html">Operational Clarity · Free Small Business Calculators</a></header><main><h1>Recipe Cost Calculator for Bakers</h1>
+
+<p>List your ingredients, what you paid and how much the recipe uses. You get the cost per batch, the cost per serving, and a price based on your target margin.</p>
+<div class="card"><table id="t"><tr><th>Ingredient</th><th>Package price ($)</th><th>Package size</th><th>Amount used</th></tr></table>
+<p class="muted">Use the same unit for package size and amount used (e.g. both in grams, or both in cups).</p>
+<div class="grid"><div><label>Servings per batch</label><input id="sv" type="number" value="24"></div><div><label>Packaging per serving ($)</label><input id="pk" type="number" value="0.15" step="0.01"></div>
+<div><label>Your time per batch (hours)</label><input id="hr" type="number" value="1.5" step="0.25"></div><div><label>Your hourly rate ($)</label><input id="rt" type="number" value="20"></div>
+<div><label>Target profit margin (%)</label><input id="mg" type="number" value="30"></div></div>
+<div class="out"><div>Ingredient cost per batch: <b id="cb"></b></div><div>Total cost per serving: <b id="cs"></b></div><div>Suggested price per serving: <span class="big" id="sp"></span></div></div></div>
+<div class="card"><h2>Cost every recipe and order in one place</h2><p>The Recipe Cost Calculator spreadsheet (Excel + Google Sheets) stores all your recipes and ingredient prices and costs whole orders.</p><a class="cta" href="https://www.etsy.com/listing/4562652240">Get the Recipe Cost Calculator on Etsy</a></div>
+<script>const rows=[["Flour",4.29,2268,500],["Butter",4.99,454,227],["Sugar",3.49,1814,300],["Eggs",3.99,12,2],["Chocolate chips",3.79,340,340],["",0,1,0]];
+const t=document.getElementById("t");rows.forEach(r=>{const tr=t.insertRow();r.forEach((x,i)=>{const td=tr.insertCell();const inp=document.createElement("input");inp.value=x;if(i)inp.type="number";inp.addEventListener("input",g);td.appendChild(inp);});});
+function g(){let c=0;[...t.rows].slice(1).forEach(tr=>{const v=[...tr.querySelectorAll("input")].map(i=>parseFloat(i.value)||0);if(v[2])c+=v[1]/v[2]*v[3];});
+const n=(id)=>parseFloat(document.getElementById(id).value)||0;const per=(c+n("hr")*n("rt"))/(n("sv")||1)+n("pk");const price=per/(1-n("mg")/100);
+document.getElementById("cb").textContent="$"+c.toFixed(2);document.getElementById("cs").textContent="$"+per.toFixed(2);document.getElementById("sp").textContent="$"+price.toFixed(2);}
+document.querySelectorAll("#sv,#pk,#hr,#rt,#mg").forEach(e=>e.addEventListener("input",g));g();</script>
+</main><footer>Free tools by <a href="https://www.etsy.com/shop/Operationalclarity">Operational Clarity</a>. Estimates only, not financial or tax advice. Not affiliated with Etsy.</footer></body></html>

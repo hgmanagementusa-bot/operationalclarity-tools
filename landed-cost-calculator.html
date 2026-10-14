@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Landed Cost Calculator – True Cost Per Unit With Freight & Duty (Free)</title><meta name="description" content="Free landed cost calculator: add freight, duty, insurance and fees to supplier price to get the true landed cost per unit and a selling price."><link rel="stylesheet" href="style.css"></head>
+<body><header><a href="index.html">Operational Clarity · Free Small Business Calculators</a></header><main><h1>Landed Cost Calculator</h1>
+
+<p>See what each unit really costs once it is on your shelf: supplier price plus freight, duty, insurance and other fees.</p>
+<div class="card"><div class="grid">
+<div><label>Units in shipment</label><input id="u" type="number" value="500"></div><div><label>Supplier price per unit ($)</label><input id="up" type="number" value="3.20" step="0.01"></div>
+<div><label>Freight / shipping ($)</label><input id="fr" type="number" value="420"></div><div><label>Duty / customs (% of goods)</label><input id="du" type="number" value="7.5" step="0.1"></div>
+<div><label>Insurance & other fees ($)</label><input id="ot" type="number" value="85"></div><div><label>Target margin (%)</label><input id="tm" type="number" value="40"></div></div>
+<div class="out"><div>Total landed cost: <b id="tl"></b></div><div>Landed cost per unit: <span class="big" id="lu"></span></div><div>Price for target margin: <b id="pr"></b></div></div></div>
+<div class="card"><h2>Log every shipment and track average landed cost</h2><p>The Landed Cost Calculator spreadsheet (Excel + Google Sheets) logs every shipment and calculates landed cost per unit automatically.</p><a class="cta" href="https://www.etsy.com/listing/4554878596">Get the Landed Cost Calculator on Etsy</a></div>
+<script>function k(){const n=id=>parseFloat(document.getElementById(id).value)||0;const goods=n("u")*n("up");const tot=goods+n("fr")+goods*n("du")/100+n("ot");const per=tot/(n("u")||1);
+document.getElementById("tl").textContent="$"+tot.toFixed(2);document.getElementById("lu").textContent="$"+per.toFixed(2);document.getElementById("pr").textContent="$"+(per/(1-n("tm")/100)).toFixed(2);}
+document.querySelectorAll("input").forEach(e=>e.addEventListener("input",k));k();</script>
+</main><footer>Free tools by <a href="https://www.etsy.com/shop/Operationalclarity">Operational Clarity</a>. Estimates only, not financial or tax advice. Not affiliated with Etsy.</footer></body></html>

@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Paycheck Budget Calculator – Split Bills by Paycheck (Free)</title><meta name="description" content="Free paycheck budget calculator: assign each bill to paycheck 1 or 2 and see what is left from every check."><link rel="stylesheet" href="style.css"></head>
+<body><header><a href="index.html">Operational Clarity · Free Small Business Calculators</a></header><main><h1>Paycheck Budget Calculator</h1>
+
+<p>Enter your take-home pay for each paycheck, list your bills, and choose which paycheck pays each one. You will see what is left from every check.</p>
+<div class="card"><div class="grid"><div><label>Paycheck 1 take-home ($)</label><input id="p1" type="number" value="2150"></div><div><label>Paycheck 2 take-home ($)</label><input id="p2" type="number" value="2150"></div></div>
+<table id="b"><tr><th>Bill</th><th>Amount ($)</th><th>Paid from</th></tr></table>
+<div class="out"><div>Left from paycheck 1: <span class="big" id="l1"></span></div><div>Left from paycheck 2: <span class="big" id="l2"></span></div></div></div>
+<div class="card"><h2>Plan every month, with savings and debt payoff</h2><p>The Paycheck Budget Planner (Excel + Google Sheets) handles up to 3 paychecks a month and includes an expense log, savings goals and months-to-debt-payoff.</p><a class="cta" href="https://www.etsy.com/listing/4594847811">Get the Paycheck Budget Planner on Etsy</a></div>
+<script>const bills=[["Rent",1450,1],["Car payment",365,1],["Phone",85,1],["Electric",120,2],["Internet",70,2],["Insurance",140,2],["Groceries",500,2],["Savings",150,2]];
+const b=document.getElementById("b");bills.forEach(r=>{const tr=b.insertRow();const a=document.createElement("input");a.value=r[0];const m=document.createElement("input");m.type="number";m.value=r[1];const s=document.createElement("select");s.innerHTML="<option value=1>Paycheck 1</option><option value=2>Paycheck 2</option>";s.value=r[2];[a,m,s].forEach(e=>{const td=tr.insertCell();td.appendChild(e);e.addEventListener("input",h);});});
+function h(){let a=[0,0,0];[...b.rows].slice(1).forEach(tr=>{const m=parseFloat(tr.cells[1].firstChild.value)||0;a[+tr.cells[2].firstChild.value]+=m;});
+const p1=parseFloat(document.getElementById("p1").value)||0,p2=parseFloat(document.getElementById("p2").value)||0;
+document.getElementById("l1").textContent="$"+(p1-a[1]).toFixed(2);document.getElementById("l2").textContent="$"+(p2-a[2]).toFixed(2);}
+["p1","p2"].forEach(i=>document.getElementById(i).addEventListener("input",h));h();</script>
+</main><footer>Free tools by <a href="https://www.etsy.com/shop/Operationalclarity">Operational Clarity</a>. Estimates only, not financial or tax advice. Not affiliated with Etsy.</footer></body></html>
