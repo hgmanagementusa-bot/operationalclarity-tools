@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hgmanagementusa-bot.github.io/operationalclarity-tools/sitemap.xml
